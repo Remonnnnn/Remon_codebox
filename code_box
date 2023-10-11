@@ -1,0 +1,26 @@
+void quicksort(int nums[100], int l, int r)
+{
+	if (l >= r)
+	{
+		return;
+	}
+	int key = nums[l];
+	int first = l;
+	int last = r;
+	while (first < last)
+	{
+		while (nums[last] >= key && first < last)
+		{
+			last--;
+		}
+		nums[first] = nums[last];
+		while (nums[first] <= key && first < last)
+		{
+			first++;
+		}
+		nums[last] = nums[first];
+	}
+	nums[first] = key;
+	quicksort(nums, l, first - 1);
+	quicksort(nums, first + 1, r);
+}
